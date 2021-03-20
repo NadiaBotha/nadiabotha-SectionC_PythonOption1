@@ -6,10 +6,11 @@ import search_replace
 #Define a class TestSearchAndReplace and inherit TestCase method.
 class TestSearchAndReplace(unittest.TestCase):
 
-    #For this specific scenario, there are three test cases:
+    #For this specific scenario, there are four test cases:
     # 1. Substring is replaced successfully at the start of a main string
     # 2. Substring is replaced successfully in the middle of a main string
     # 3. Substring is replaced successfully at the end of a main string
+    # 4. Exception handling when the substring entered is not in the main string.
 
     #Two tests have been created for each test case.
 
@@ -39,3 +40,14 @@ class TestSearchAndReplace(unittest.TestCase):
     def test_search_and_replace_end_two(self):
         result = search_replace.search_and_replace("I am Batman", "man", "!!",0)
         self.assertEqual(result,"I am Bat!!")
+
+    # Test case 4 - check if the error message is displayed when the user enters a substring that is not
+    # in the main string
+    def test_search_and_replace_notfound_one(self):
+        result = search_replace.search_and_replace("Hello World!", "lde", "@@",0)
+        self.assertEqual(result,"ERROR: The substring entered is not found.")
+
+    def test_search_and_replace_notfound_two(self):
+        result = search_replace.search_and_replace("I am Batman", "Robin", "!!",0)
+        self.assertEqual(result,"ERROR: The substring entered is not found.")
+    
